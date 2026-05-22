@@ -4,9 +4,6 @@ const guestName = document.getElementById("guestName");
 
 /* =========================
 LIST TAMU
-Link contoh:
-index.html?to=yasir
-index.html?to=Yasir-Sopyan
 ========================= */
 
 const guestList = {
@@ -63,7 +60,7 @@ const guestList = {
 };
 
 /* =========================
-NAMA TAMU DARI LINK
+NAMA TAMU
 ========================= */
 
 const params = new URLSearchParams(window.location.search);
@@ -83,13 +80,12 @@ if (guestName) {
 }
 
 /* =========================
-OPEN COVER 1 VIDEO
+BUKA COVER 1 KE COVER 2
 ========================= */
 
 function openGate() {
   const coverOne = document.getElementById("coverOne");
   const coverTwo = document.getElementById("coverTwo");
-  const coverVideo = document.getElementById("coverVideo");
   const coverTwoVideo = document.getElementById("coverTwoVideo");
   const coverContent = document.getElementById("coverContent");
   const coverTwoBtn = document.getElementById("coverTwoBtn");
@@ -100,38 +96,19 @@ function openGate() {
   }
 
   if (coverContent) {
-    setTimeout(() => {
-      coverContent.classList.add("hide");
-    }, 250);
+    coverContent.classList.add("hide");
   }
 
   if (music) {
     music.play().catch(() => {});
   }
 
-  if (coverTwoVideo) {
-    coverTwoVideo.pause();
-    coverTwoVideo.currentTime = 0;
-  }
-
-  if (coverVideo) {
-    coverVideo.currentTime = 0;
-    coverVideo.play().catch(() => {
-      goToCoverTwo();
-    });
-
-    coverVideo.onended = () => {
-      goToCoverTwo();
-    };
-  } else {
-    goToCoverTwo();
-  }
-
-  function goToCoverTwo() {
-  if (coverOne) {
-    coverOne.style.opacity = "0";
-    coverOne.style.pointerEvents = "none";
-  }
+  setTimeout(() => {
+    if (coverOne) {
+      coverOne.classList.add("opening");
+      coverOne.style.pointerEvents = "none";
+    }
+  }, 250);
 
   setTimeout(() => {
     if (coverOne) {
@@ -157,8 +134,7 @@ function openGate() {
         coverTwoBtn.classList.add("show");
       }, 3000);
     }
-  }, 450);
-}
+  }, 1200);
 }
 
 /* =========================

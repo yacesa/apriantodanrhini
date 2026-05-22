@@ -7,56 +7,56 @@ LIST TAMU
 ========================= */
 
 const guestList = {
-  yasir: "Yasir Sopyan",
-  andi: "Andi",
-  riska: "Riska",
-  budi: "Budi Santoso",
-  siti: "Siti Nurhaliza",
-  rahmat: "Rahmat",
-  fitri: "Fitri",
-  agus: "Agus",
-  lina: "Lina",
-  hendra: "Hendra",
-  nur: "Nur",
-  fajar: "Fajar",
-  wati: "Wati",
-  arman: "Arman",
-  dewi: "Dewi",
-  ikbal: "Ikbal",
-  putri: "Putri",
-  wahyu: "Wahyu",
-  rina: "Rina",
-  akbar: "Akbar",
-  sari: "Sari",
-  ilham: "Ilham",
-  nanda: "Nanda",
-  rudi: "Rudi",
-  eva: "Eva",
-  yanto: "Yanto",
-  maya: "Maya",
-  irwan: "Irwan",
-  ani: "Ani",
-  dika: "Dika",
-  ayu: "Ayu",
-  reza: "Reza",
-  nisa: "Nisa",
-  ali: "Ali",
-  mia: "Mia",
-  adit: "Adit",
-  rara: "Rara",
-  eko: "Eko",
+  ana: "Ana",
+  mrizal: "M Rizal & Silvana",
+  supriyanto: "Supriyanto & Feni",
+  puput: "Puput",
+  ady: "Ady",
+  adrianhasa: "Adrian Hasa",
+  lalang: "Lalang",
+  pikar: "Pikar",
+  dinanurjanah: "Dina Nurjanah S.Pd",
+  ratikahar: "Rati Kahar S.Pd",
+  kasri: "KA Sri",
+  mira: "Mira",
+  asmini: "Asmini dan Suami",
+  aisyahpmr: "Aisyah/PMR",
+  alumnisma1momunu: "Alumni SMA Negri 1 Momunu",
+  alumnimtsn3buol: "Alumni Mts N 3 Buol",
+  fraldo: "Fraldo",
+  nurmita: "Nurmita",
+  lisa: "Lisa",
+  bidanpkm: "Bidan Bidan PKM Momunu",
+  alumnismp1momunu: "Alumni SMP N 1 Momunu",
+  feniarahmad: "Feniar S. Ahmad",
+  anggi: "Anggi",
   tika: "Tika",
-  hafiz: "Hafiz",
-  mila: "Mila",
-  galih: "Galih",
-  nia: "Nia",
-  bayu: "Bayu",
-  salsa: "Salsa",
-  bagus: "Bagus",
-  intan: "Intan",
-  firman: "Firman",
-  amel: "Amel",
-  rian: "Rian"
+  rafliibrahim: "Rafli Ibrahim",
+  nurhayati: "Nurhayati dan Suami",
+  maya: "Maya",
+  karina: "Karina",
+  fenty: "Fenty dan Pasangan",
+  adeavriliani: "Ade Avriliani dan Pasangan",
+  zafira: "Zafira dan Pasangan",
+  afniantu: "Afni A. Antu",
+  susanti: "Susanti A.Md. Keb & Zulfikar",
+  fitri: "Fitri",
+  wirdaningsih: "WirdaNingsih dan Suami",
+  nursafitri: "NurSafitri dan Pasangan",
+  keluargaparigi: "Keluarga di Parigi",
+  yantitimumun: "Yanti d Timumun & Pasangan",
+  kariman: "Kariman dan Pasangan",
+  mamafarisa: "Mama Farisa & Keluarga",
+  anto: "Anto & Istri",
+  sintahadu: "Sinta S.Hadu & Suami",
+  jayadi: "Jayadi",
+  mutmainah: "Mutmainah dan Suami",
+  zilhana: "Zilhana",
+  sarahsalsa: "Sarah Salsa Sabila",
+  febi: "Febi",
+  alfandi: "Alfandi dan Istri",
+  martinalihawa: "Martina Lihawa S.Pd",
+  topanhidayat: "Topan Hidayat"
 };
 
 /* =========================
@@ -67,16 +67,44 @@ const params = new URLSearchParams(window.location.search);
 const guestKey = params.get("to");
 
 if (guestName) {
-  if (guestKey) {
-    const cleanKey = guestKey.toLowerCase().trim();
-    const cleanName = decodeURIComponent(guestKey)
-      .replaceAll("-", " ")
-      .replace(/\b\w/g, char => char.toUpperCase());
 
-    guestName.innerText = guestList[cleanKey] || cleanName;
+  if (guestKey) {
+
+    const cleanKey =
+      guestKey.toLowerCase().trim();
+
+    // AMBIL NAMA DARI guestList
+    const realName =
+      guestList[cleanKey];
+
+    // JIKA ADA &
+    if (realName && realName.includes("&")) {
+
+      const splitName =
+        realName.split("&");
+
+      guestName.innerHTML = `
+        ${splitName[0].trim()}
+        <br>
+        &
+        <br>
+        ${splitName[1].trim()}
+      `;
+
+    } else {
+
+      guestName.innerHTML =
+        realName || "Tamu Undangan";
+
+    }
+
   } else {
-    guestName.innerText = "Tamu Undangan";
+
+    guestName.innerHTML =
+      "Tamu Undangan";
+
   }
+
 }
 
 /* =========================

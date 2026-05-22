@@ -231,3 +231,110 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+/* =========================
+KIRIM UCAPAN KE WA
+========================= */
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbx0UrBEw3AuQVGOCsT9qp12LvuY7E7BoyQiH1Cd7qPJSOWssWdSoXfYzw5BQOAxawg/exec";
+
+function loadWishes(){
+
+  const wishList = document.getElementById("wishList");
+  if(!wishList) return;
+
+  wishList.innerHTML = `<p class="empty-wish">Memuat ucapan...</p>`;
+
+  const oldScript = document.getElementById("jsonpWishes");
+  if(oldScript) oldScript.remove();
+
+  window.showWishes = function(data){
+
+    wishList.innerHTML = "";
+
+    if(!data || data.length === 0){
+      wishList.innerHTML = `<p class="empty-wish">Belum ada ucapan.</p>`;
+      return;
+    }
+
+    data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "wish-item";
+
+      card.innerHTML = `
+        <h4>${item.nama || "Tamu Undangan"}</h4>
+        <span>${item.status || "-"}</span>
+        <p>${item.ucapan || ""}</p>
+      `;
+
+      wishList.appendChild(card);
+    });
+  };
+
+  const script = document.createElement("script");
+  script.id = "jsonpWishes";
+  script.src = SCRIPT_URL + "?callback=showWishes";
+  script.onerror = function(){
+    wishList.innerHTML = `<p class="empty-wish">Ucapan gagal dimuat.</p>`;
+  };
+
+  document.body.appendChild(script);
+}
+
+async function sendWish(){
+
+  const nameInput = document.getElementById("wishName");
+  const statusInput = document.getElementById("wishStatus");
+  const messageInput = document.getElementById("wishMessage");
+
+  const nama = nameInput.value.trim();
+  const status = statusInput.value;
+  const ucapan = messageInput.value.trim();
+
+  if(!nama || !status || !ucapan){
+    alert("Nama, kehadiran, dan ucapan wajib diisi");
+    return;
+  }
+
+  /* SIMPAN KE DATABASE */
+  await fetch(SCRIPT_URL, {
+    method:"POST",
+    mode:"no-cors",
+    body:JSON.stringify({
+      nama:nama,
+      status:status,
+      ucapan:ucapan
+    })
+  });
+
+  /* NOMOR WA KLIEN */
+  const phone = "628xxxxxxxxxx";
+
+  const waText =
+`Wedding Apri & Rhini
+
+Nama:
+${nama}
+
+Konfirmasi:
+${status}
+
+Ucapan:
+${ucapan}`;
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`,
+    "_blank"
+  );
+
+  nameInput.value = "";
+  statusInput.value = "";
+  messageInput.value = "";
+
+  alert("Ucapan berhasil dikirim");
+
+  setTimeout(loadWishes, 1500);
+}
+
+document.addEventListener("DOMContentLoaded", loadWishes);

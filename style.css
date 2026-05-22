@@ -129,16 +129,26 @@ body{
 }
 
 .cover-title{
-  font-family:'Great Vibes',cursive;
-  font-size:64px;
-  line-height:.92;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  font-family:'Allura', cursive;
+  font-size:72px;
+  line-height:1.02;
   font-weight:400;
+
   color:#8f294a;
-  margin-bottom:30px;
+
+  margin-bottom:28px;
+
+  text-align:center;
+
   text-shadow:
   0 2px 0 rgba(255,255,255,.95),
-  0 8px 24px rgba(120,40,70,.25),
-  0 0 28px rgba(255,255,255,.75);
+  0 8px 24px rgba(120,40,70,.22),
+  0 0 26px rgba(255,255,255,.65);
 }
 
 .cover-title span{
@@ -146,11 +156,36 @@ body{
 }
 
 .cover-title small{
-  display:block;
-  font-family:'Great Vibes',cursive;
-  font-size:42px;
-  line-height:.8;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+
+  font-family:'Allura', cursive;
+
+  font-size:48px;
+
+  line-height:1;
+
+  margin:2px 0 -2px;
+
   color:#9f3452;
+
+  transform:translateX(-2px);
+}
+
+@media(max-width:430px){
+
+  .cover-title{
+    font-size:64px;
+  }
+
+  .cover-title small{
+    font-size:42px;
+  }
+
 }
 
 .guest-box{
@@ -856,4 +891,438 @@ footer{
 
 .music-btn.show{
   display:block;
+}
+
+.map-card{
+  width:100%;
+  margin-top:22px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 18px 45px rgba(120,45,70,.20);
+}
+
+.map-card iframe{
+  width:100%;
+  height:280px;
+  border:0;
+  display:block;
+}
+
+/* =========================
+GLOBAL FONT NAMA PENGANTIN
+========================= */
+
+.cover-title,
+.hero-name,
+.person h3,
+footer h1,
+.and{
+  font-family:'Imperial Script', cursive !important;
+  font-weight:400 !important;
+  color:#8f294a !important;
+  text-shadow:
+  0 2px 0 rgba(255,255,255,.95),
+  0 8px 24px rgba(120,40,70,.22),
+  0 0 26px rgba(255,255,255,.65) !important;
+}
+
+/* FORMAT NAMA TURUN */
+.cover-title,
+.hero-name{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  line-height:.82 !important;
+}
+
+.cover-title{
+  font-size:76px !important;
+}
+
+.hero-name{
+  font-size:72px !important;
+  margin:14px 0 16px !important;
+}
+
+.cover-title span,
+.hero-name span{
+  display:block !important;
+}
+
+.cover-title small,
+.hero-name small{
+  display:block !important;
+  width:100% !important;
+  text-align:center !important;
+  font-family:'Imperial Script', cursive !important;
+  font-size:46px !important;
+  line-height:.7 !important;
+  margin:8px 0 12px !important;
+  color:#9f3452 !important;
+}
+
+.person h3{
+  font-size:54px !important;
+}
+
+footer h1{
+  font-size:64px !important;
+}
+
+.and{
+  font-size:64px !important;
+}
+
+@media(max-width:430px){
+  .cover-title{
+    font-size:70px !important;
+  }
+
+  .hero-name{
+    font-size:66px !important;
+  }
+
+  .cover-title small,
+  .hero-name small{
+    font-size:44px !important;
+  }
+
+  .person h3{
+    font-size:50px !important;
+  }
+
+  footer h1{
+    font-size:58px !important;
+  }
+}
+
+
+/* =========================
+MAPS PREMIUM
+========================= */
+
+.map-card{
+  position:relative;
+  width:100%;
+  margin-top:28px;
+  padding:10px;
+  border-radius:32px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.55),
+    rgba(255,220,232,.35)
+  );
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:
+  0 22px 55px rgba(120,45,70,.22),
+  inset 0 1px 0 rgba(255,255,255,.75);
+  overflow:hidden;
+}
+
+.map-card::before{
+  content:"Lokasi Acara";
+  display:block;
+  margin-bottom:10px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8f294a;
+}
+
+.map-card iframe{
+  width:100%;
+  height:300px;
+  border:0;
+  display:block;
+  border-radius:24px;
+  filter:saturate(.9) contrast(.95);
+}
+
+.map-address{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.55);
+  font-size:13px;
+  line-height:1.7;
+  font-weight:600;
+  color:#5f3340;
+}
+
+/* =========================
+RSVP WA PREMIUM
+========================= */
+
+.rsvp-desc{
+  font-size:14px;
+  line-height:1.8;
+  margin-bottom:18px;
+  color:#5f3340;
+}
+
+.wa-btn{
+  width:100%;
+  margin-top:4px;
+  background:linear-gradient(
+    135deg,
+    #25D366,
+    #1da851
+  ) !important;
+  box-shadow:
+  0 18px 40px rgba(37,211,102,.25) !important;
+}
+
+.wa-btn i{
+  margin-right:8px;
+}
+
+.wish-result{
+  margin-top:32px;
+  text-align:left;
+}
+
+.wish-result h3{
+  font-size:15px;
+  font-weight:800;
+  color:#8f294a;
+  margin-bottom:16px;
+  text-align:center;
+  letter-spacing:1px;
+}
+
+#wishList{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.wish-item{
+  padding:16px;
+  border-radius:24px;
+  background:rgba(255,255,255,.35);
+  border:1px solid rgba(255,255,255,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:
+  0 12px 30px rgba(120,45,70,.12);
+}
+
+.wish-item h4{
+  font-size:14px;
+  font-weight:800;
+  color:#8f294a;
+  margin-bottom:8px;
+}
+
+.wish-item p{
+  font-size:13px;
+  line-height:1.7;
+  color:#5f3340;
+}
+
+.empty-wish{
+  text-align:center;
+  font-size:13px;
+  color:#5f3340;
+}
+
+.wish-item span{
+  display:inline-block;
+  margin-bottom:8px;
+  font-size:11px;
+  font-weight:800;
+  color:#9f3452;
+}
+
+
+/* =========================
+YACESA BRAND FOOTER
+========================= */
+
+.brand{
+  position:relative;
+
+  margin:20px 16px 18px !important;
+
+  padding:38px 26px;
+
+  border-radius:34px;
+
+  overflow:hidden;
+
+  text-align:center;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.48),
+    rgba(255,240,245,.22)
+  );
+
+  border:1px solid rgba(255,255,255,.58);
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  box-shadow:
+  0 24px 55px rgba(120,45,70,.18),
+  inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.brand::before{
+  content:'';
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(255,255,255,.55),
+    transparent 45%
+  );
+
+  pointer-events:none;
+}
+
+.small-title{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:4px;
+  text-transform:uppercase;
+
+  color:#9f3452;
+
+  margin-bottom:10px;
+}
+
+.brand-name{
+
+  font-family:'Imperial Script', cursive;
+
+  font-size:62px;
+  line-height:.9;
+
+  font-weight:400;
+
+  color:#8f294a;
+
+  margin-bottom:14px;
+
+  text-shadow:
+  0 2px 0 rgba(255,255,255,.9),
+  0 10px 25px rgba(120,45,70,.18);
+}
+
+.brand-desc{
+  font-size:14px;
+  line-height:1.8;
+  color:#5f3340;
+
+  margin-bottom:28px;
+}
+
+.brand-contact{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  margin-bottom:24px;
+}
+
+.brand-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  width:100%;
+
+  height:54px;
+
+  border-radius:20px;
+
+  text-decoration:none;
+
+  font-size:14px;
+  font-weight:700;
+
+  color:white;
+
+  background:
+  linear-gradient(
+    135deg,
+    #c95b81,
+    #8f294a
+  );
+
+  box-shadow:
+  0 16px 35px rgba(143,41,74,.25);
+
+  transition:.3s ease;
+}
+
+.brand-btn:active{
+  transform:scale(.98);
+}
+
+.brand-btn i{
+  font-size:18px;
+}
+
+.brand-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 26px;
+
+  border-radius:18px;
+
+  text-decoration:none;
+
+  font-size:13px;
+  font-weight:700;
+
+  color:#8f294a;
+
+  background:rgba(255,255,255,.42);
+
+  border:1px solid rgba(255,255,255,.6);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  transition:.3s ease;
+}
+
+.brand-link:active{
+  transform:scale(.97);
+}
+
+@media(max-width:430px){
+
+  .brand{
+    margin:24px 12px 120px;
+    padding:34px 22px;
+  }
+
+  .brand-name{
+    font-size:54px;
+  }
+
+}
+
+#brand{
+  transform:translateY(28px);
+}
+
+.bottom-navbar{
+  z-index:9999;
 }

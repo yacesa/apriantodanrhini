@@ -237,7 +237,7 @@ KIRIM UCAPAN KE WA
 ========================= */
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbx0UrBEw3AuQVGOCsT9qp12LvuY7E7BoyQiH1Cd7qPJSOWssWdSoXfYzw5BQOAxawg/exec";
+"https://script.google.com/macros/s/AKfycbzjxxhgBz5L1ybLIhIUgJaPFMKPG9KsXSzN-X9ZJGw7sQmhtChG9EGyszpJb_MkBooG/exec";
 
 function loadWishes(){
 

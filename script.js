@@ -312,21 +312,48 @@ function loadWishes(){
 
 async function sendWish(){
 
-  const nameInput = document.getElementById("wishName");
-  const statusInput = document.getElementById("wishStatus");
-  const messageInput = document.getElementById("wishMessage");
+  const btn =
+    document.querySelector(".rsvp-btn");
+
+  if(btn.classList.contains("loading"))
+    return;
+
+  btn.classList.add("loading");
+  btn.innerHTML = `
+    <i class="fa-solid fa-spinner fa-spin"></i>
+    Mengirim...
+  `;
+
+  const nameInput =
+    document.getElementById("wishName");
+
+  const statusInput =
+    document.getElementById("wishStatus");
+
+  const messageInput =
+    document.getElementById("wishMessage");
 
   const nama = nameInput.value.trim();
   const status = statusInput.value;
   const ucapan = messageInput.value.trim();
 
   if(!nama || !status || !ucapan){
-    alert("Nama, kehadiran, dan ucapan wajib diisi");
+
+    alert(
+      "Nama, kehadiran, dan ucapan wajib diisi"
+    );
+
+    btn.classList.remove("loading");
+
+    btn.innerHTML = `
+      <i class="fa-brands fa-whatsapp"></i>
+      Kirim Ucapan
+    `;
+
     return;
   }
 
-  /* SIMPAN KE DATABASE */
-  await fetch(SCRIPT_URL, {
+  await fetch(SCRIPT_URL,{
     method:"POST",
     mode:"no-cors",
     body:JSON.stringify({
@@ -336,7 +363,6 @@ async function sendWish(){
     })
   });
 
-  /* NOMOR WA KLIEN */
   const phone = "6285274015332";
 
   const waText =
@@ -360,9 +386,23 @@ ${ucapan}`;
   statusInput.value = "";
   messageInput.value = "";
 
-  alert("Ucapan berhasil dikirim");
+  btn.innerHTML = `
+    <i class="fa-solid fa-check"></i>
+    Berhasil Terkirim
+  `;
 
-  setTimeout(loadWishes, 1500);
+  setTimeout(()=>{
+
+    btn.classList.remove("loading");
+
+    btn.innerHTML = `
+      <i class="fa-brands fa-whatsapp"></i>
+      Kirim Ucapan
+    `;
+
+  },3000);
+
+  setTimeout(loadWishes,1500);
 }
 
 document.addEventListener("DOMContentLoaded", loadWishes);

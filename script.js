@@ -309,7 +309,7 @@ async function sendWish(){
   });
 
   /* NOMOR WA KLIEN */
-  const phone = "628xxxxxxxxxx";
+  const phone = "6285274015332";
 
   const waText =
 `Wedding Apri & Rhini

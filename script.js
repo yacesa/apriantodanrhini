@@ -27,7 +27,7 @@ const guestList = {
   nurmita: "Nurmita",
   lisa: "Lisa",
   bidanpkm: "Bidan Bidan PKM Momunu",
-  alumnismp1momunu: "Alumni SMP N 1 Momunu",
+  alumnismp3momunu: "Alumni SMP 3 Momunu",
   feniarahmad: "Feniar S. Ahmad",
   anggi: "Anggi",
   tika: "Tika",
